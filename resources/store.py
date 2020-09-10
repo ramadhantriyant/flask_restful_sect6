@@ -19,7 +19,7 @@ class Store(Resource):
         try:
             store.save_to_db()
         except:
-            return {'message': "An error occured when inserting the store"}, 500
+            return {'message': "An error occurred when inserting the store"}, 500
         return store.json(), 201
 
     @jwt_required()
@@ -29,7 +29,7 @@ class Store(Resource):
             try:
                 store.delete_from_db()
             except:
-                return {'message': "An error occured when deleting the store"}, 500
+                return {'message': "An error occurred when deleting the store"}, 500
             return {'message': f"Store {name} deleted!"}, 201
             # store.delete_from_db()
 
