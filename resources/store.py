@@ -24,13 +24,14 @@ class Store(Resource):
 
     @jwt_required()
     def delete(self, name):
-        if StoreModel.find_by_name(name):
-            store = StoreModel(name)
+        store = StoreModel.find_by_name(name)
+        if store:
             try:
                 store.delete_from_db()
             except:
                 return {'message': "An error occured when deleting the store"}, 500
             return {'message': f"Store {name} deleted!"}, 201
+            # store.delete_from_db()
 
         return {'message': f"Store {name} doesn't exists!"}, 404
 
