@@ -21,7 +21,7 @@ class Item(Resource):
         try:
             item = ItemModel.find_by_name(name)
         except:
-            return {'message': "An error occured when retrieving the item"}, 500
+            return {'message': "An error occurred when retrieving the item"}, 500
 
         if item:
             return item.json()
@@ -32,7 +32,7 @@ class Item(Resource):
         try:
             item = ItemModel.find_by_name(name)
         except:
-            return {'message': "An error occured when retrieving the item"}, 500
+            return {'message': "An error occurred when retrieving the item"}, 500
 
         if item:
             return {'message': f"An item with name '{name}' already exists."}, 400
@@ -43,7 +43,7 @@ class Item(Resource):
         try:
             item.save_to_db()
         except:
-            return {'message': "An error occured when inserting the item"}, 500
+            return {'message': "An error occurred when inserting the item"}, 500
 
         return item.json(), 201
 
@@ -52,7 +52,7 @@ class Item(Resource):
         try:
             item = ItemModel.find_by_name(name)
         except:
-            return {'message': "An error occured when retrieving the item"}, 500
+            return {'message': "An error occurred when retrieving the item"}, 500
 
         if not item:
             return {'message': f"An item with name '{name}' does not exists."}, 400
@@ -60,7 +60,7 @@ class Item(Resource):
         try:
             item.delete_from_db()
         except:
-            return {'message': "An error occured when deleting the item"}, 500
+            return {'message': "An error occurred when deleting the item"}, 500
 
         return {'message': "Item deleted"}, 201
 
@@ -75,13 +75,13 @@ class Item(Resource):
             try:
                 item.save_to_db()
             except:
-                return {'message': "An error occured when saving the item"}, 500
+                return {'message': "An error occurred when saving the item"}, 500
         else:
             item = ItemModel(name, data['price'], data['store_id'])
             try:
                 item.save_to_db()
             except:
-                return {'message': "An error occured when saving the item"}, 500
+                return {'message': "An error occurred when saving the item"}, 500
 
         return item.json(), 201
 
