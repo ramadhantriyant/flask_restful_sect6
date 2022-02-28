@@ -55,7 +55,7 @@ class Item(Resource):
             return {'message': "An error occurred when retrieving the item"}, 500
 
         if not item:
-            return {'message': f"An item with name '{name}' does not exists."}, 400
+            return {'message': f"Item {name} does not exists."}, 400
 
         try:
             item.delete_from_db()
